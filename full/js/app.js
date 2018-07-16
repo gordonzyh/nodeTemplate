@@ -1548,7 +1548,7 @@ var calc_navbar_height = function() {
 	
 		//get the url by removing the hash
 		//var url = location.hash.replace(/^#/, '');
-		var url = location.href.split('#').splice(1).join('#');
+        var url = location.href.split('#').splice(1).join('#');
 		//BEGIN: IE11 Work Around
 		if (!url) {
 		
