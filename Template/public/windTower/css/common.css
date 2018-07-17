@@ -1,0 +1,24 @@
+/*页脚定义修正*/
+.page-footer {
+    padding: 10px 0 0 0;
+    text-align: center;
+    height: 40px;
+}
+/*头部定义修正*/
+.fixed-ribbon #ribbon{
+    padding: 10px 30px ;
+    right: 0;
+    left: 0;
+    top: 0;
+}
+/*面包屑分隔符调整*/
+.breadcrumb>li+li:before{
+    content: ">";
+}
+/*头部logo设定*/
+.header-logo{
+    width:	114px;
+    height:	40px;
+    display: inline-block;
+    background-size:100% 100%;
+}

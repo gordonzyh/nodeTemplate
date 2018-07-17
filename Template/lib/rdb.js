@@ -4,7 +4,7 @@ var basePath = process.cwd();
 basePath = basePath.indexOf("bin") != -1?basePath.substr(0,basePath.indexOf("bin")-1):basePath;
 var objConfig = require(basePath + "/config/config").config;;
 var isOnCloudServer = true;
-if(undefined != objConfig.IS_ON_CLOUD_SERVER && null != objConfig.IS_ON_CLOUD_SERVER && "false" == objConfig.IS_ON_CLOUD_SERVER){
+if(undefined != objConfig.redisInfo.isOnCloudServer && null != objConfig.redisInfo.isOnCloudServer && "false" == objConfig.redisInfo.isOnCloudServer){
 	isOnCloudServer = false;
 }
 
@@ -12,8 +12,8 @@ var client ;
 if(isOnCloudServer){
 	console.log("连接集群redis");
 	var redis4Cluster = require("ioredis");
-	if(undefined != objConfig.redis4Cluster && null != objConfig.redis4Cluster){
-		client = new redis4Cluster.Cluster(objConfig.redis4Cluster);
+	if(undefined != objConfig.redisInfo.redis4Cluster && null != objConfig.redisInfo.redis4Cluster){
+		client = new redis4Cluster.Cluster(objConfig.redisInfo.redis4Cluster);
 	}else{
 		console.log("Redis参数不正确：当前参数为集群模式，请正确配置redis4Cluster参数");
 		throw new Error("Redis配置错误");
@@ -24,9 +24,9 @@ if(isOnCloudServer){
 	var blueBird = require("bluebird"); //blueBird使redis查询同步
 	blueBird.promisifyAll(redis.RedisClient.prototype);
 	blueBird.promisifyAll(redis.Multi.prototype);
-	if(undefined != objConfig.redis && null != objConfig.redis){
-		client = redis.createClient(objConfig.redis.PORT,objConfig.redis.IP);
-		client.auth(objConfig.redis.REQUIREPASS,function(){
+	if(undefined != objConfig.redisInfo.redis && null != objConfig.redisInfo.redis){
+		client = redis.createClient(objConfig.redisInfo.redis.PORT,objConfig.redisInfo.redis.IP);
+		client.auth(objConfig.redisInfo.redis.REQUIREPASS,function(){
 			console.log("通过权限验证");
 		});
 	}else{

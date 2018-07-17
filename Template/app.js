@@ -13,7 +13,7 @@ var join = require('path').join;
 var connect = require('connect');//主要进行session的设置
 var ejs = require('ejs');
 let config = require("./config/config").config;
-var FENG_YUN_SERVER_URL = config.FENG_YUN_SERVER_URL
+var fengYunServerUrl = config.serverInfo.fengYunServerUrl;
 
 var app = express();
 //设置跨域访问
@@ -30,7 +30,7 @@ var log = require('./lib/logHelper');
 log.use(app);
 
 // view engine setup
-app.set('views', path.join(__dirname, 'public/' + config.projectName + '/views'));
+app.set('views', path.join(__dirname, 'public/' + config.projectInfo.projectName + '/views'));
 app.engine('html', ejs.__express);
 app.set('view engine', 'html');
 
@@ -38,17 +38,17 @@ app.set('view engine', 'html');
 // app.set('trust proxy', true);
 
 // uncomment after placing your favicon in /public
-app.use(favicon(path.join(__dirname, 'public', config.projectName + '/images/favicon.ico')));
+app.use(favicon(path.join(__dirname, 'public', config.projectInfo.projectName + '/images/favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(connect.session({
-    secret: 'scada-' + config.projectName, key: 'scada-' + config.projectName, /*cookie: { maxAge:
+    secret: 'scada-' + config.projectInfo.projectName, key: 'scada-' + config.projectInfo.projectName, /*cookie: { maxAge:
  1800000}*/
 }));//不设置maxAge则浏览器关闭session失效
 app.use(express.static(path.join(__dirname, 'public')));
-app.use('/' + config.projectName + '/node_modules', express.static(path.join(__dirname, 'node_modules')));
+app.use('/' + config.projectInfo.projectName + '/node_modules', express.static(path.join(__dirname, 'node_modules')));
 
 //登陆拦截器
 app.use(function (req, res, next) {
@@ -60,8 +60,8 @@ app.use(function (req, res, next) {
         return res.redirect("/index");
     }
     var urlReal = url.split("?")[0];
-    // if (!req.session.user && urlReal != "/" + config.projectName + "/loginFromFY") return
-    // res.redirect(FENG_YUN_SERVER_URL);
+    // if (!req.session.user && urlReal != "/" + config.projectInfo.projectName + "/loginFromFY") return
+    // res.redirect(fengYunServerUrl);
     next();
 });
 

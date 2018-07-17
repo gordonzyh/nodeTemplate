@@ -5,7 +5,7 @@ let config = require("../../config/config").config;
 let _this = this;
 
 exports.boundAppsUrl = function (app, url, func, options) {
-    let boundUrl = '/' + config.projectName + (url ? "/" + url : "");
+    let boundUrl = '/' + config.projectInfo.projectName + (url ? "/" + url : "");
     if (options["submitTpe"].toLocaleLowerCase()==="post"){
         app.post(boundUrl, func);
     }else if (options["submitTpe"].toLocaleLowerCase()==='get'){
@@ -205,6 +205,7 @@ exports.render = function (req, res, htmlName, option) {
     } else {
         option["authJson"] = req.authJson
     }
+    option["projectViewName"] =config.projectInfo.projectViewName;
     res.render(htmlName, _this.extendCom(option));
 }
 /**************************************时间格式化处理************************************/

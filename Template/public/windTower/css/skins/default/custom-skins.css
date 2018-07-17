@@ -1,0 +1,8 @@
+/*头部面包屑颜色调整*/
+#ribbon .breadcrumb li:last-child>a{
+    color: #ffffff!important;
+}
+/*头部logo设定*/
+.header-logo{
+    background-image:url(../../../images/logo-big-transparent.png)!important;
+}
