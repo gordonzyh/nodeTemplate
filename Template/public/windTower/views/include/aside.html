@@ -23,14 +23,3 @@
         </li>
     </ul>
 </aside>
-
-<script type="text/javascript">
-    $(function () {
-        //设置用户名
-        $('.sidebar-user-name').text($("#top_show_username").val());
-
-        function showms(id) {
-            $('#' + id).children(".glyphicon").toggleClass("glyphicon-minus-sign").parent().next("ul").slideToggle();
-        }
-    });
-</script>
