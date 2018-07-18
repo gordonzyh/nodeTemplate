@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+<html lang="zh-CN" ng-app="app">
 <!--所有html的Head-->
 <head>
     <meta charset="utf-8">
@@ -26,6 +28,7 @@
     <!--自定义样式-->
     <link rel="stylesheet" href="css/common.css">
     <link rel="stylesheet" href="css/custom.css">
+    <link rel="stylesheet" href="css/menu-build.css">
 
     <!--plugins-->
     <script src="plugins/jquery/jquery-3.3.1.js"></script>
@@ -43,15 +46,15 @@
     <script src="plugins/select2/select2.min.js"></script>
 
     <script src="plugins/toastr/toastr.js"></script>
+    <script src="js/common/jsCommon.js"></script>
+    <script src="js/common/jsCustomCommon.js"></script>
 
-    <!--<script src="js/commonJS.js"></script>-->
-    <!--<script src="js/configure/js.js"></script>-->
-    <!--<script src="js/common.js"></script>-->
-    <!--<script src="js/menu-build.js"></script>-->
-    <!--<script src="js/treeCommon.js"></script>-->
-    <!--<script src="js/control-build.js"></script>-->
-    <!--<script src="js/common/msgResorce.js"></script>-->
-    <!--<script src="js/auth.js"></script>-->
-    <!--<script src="js/common/inputclean.js"></script>-->
-    <!--<script src="js/common/inputSeePwd.js"></script>-->
 </head>
+<body class="smart-style-0 fixed-page-footer fixed-ribbon">
+<!-- 头部 -->
+<%- include('header.html') %>
+<!--侧边栏-->
+<%- include('aside.html') %>
+<!-- 内容  开始 -->
+<!-- ***** ARTICLE START ***** -->
+<article id="article" class="clearfix">

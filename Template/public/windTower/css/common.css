@@ -1,24 +1,78 @@
+html, body {
+    height: 100%;
+}
+
+body {
+    padding: 40px 0 40px 0;
+}
+
+/*侧边栏mask*/
+.aside-mask {
+    width: 100%;
+    height: calc(100% - 80px);
+    top: 40px;
+    display: none;
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: 20;
+}
+
+.aside-min {
+    background-color: rgba(0, 0, 0, 0.1);
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+    width: 40px;
+    height: calc(100% - 80px);
+    top: 40px;
+}
+
+.aside-max {
+    background-color: rgba(0, 0, 0, 0.6);
+    position: fixed;
+    left: 0px;
+    bottom: 0px;
+    width: 220px;
+    z-index: 21;
+    height: calc(100% - 80px);
+    top: 40px;
+}
+
+/*内容开始容器*/
+#article {
+    height: 100%;
+    width: calc(100% - 40px);
+    float: right;
+    padding: 0px;
+    overflow: auto
+}
+
 /*页脚定义修正*/
 .page-footer {
     padding: 10px 0 0 0;
     text-align: center;
     height: 40px;
+    border: 0;
 }
+
 /*头部定义修正*/
-.fixed-ribbon #ribbon{
-    padding: 10px 30px ;
+.fixed-ribbon #ribbon {
+    padding: 0 30px;
+    height: 40px;
     right: 0;
     left: 0;
     top: 0;
 }
+
 /*面包屑分隔符调整*/
-.breadcrumb>li+li:before{
+.breadcrumb > li + li:before {
     content: ">";
 }
+
 /*头部logo设定*/
-.header-logo{
-    width:	114px;
-    height:	40px;
+.header-logo {
+    width: 114px;
+    height: 40px;
     display: inline-block;
-    background-size:100% 100%;
+    background-size: 100% 100%;
 }
