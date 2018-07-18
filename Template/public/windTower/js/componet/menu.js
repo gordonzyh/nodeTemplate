@@ -49,7 +49,7 @@ function showall(menu_list, parent, level, hasNex) {
             $(li).appendTo(parent);
         } else {
             let alertNumber = menu_list[i]["alertNumber"] ? menu_list[i]["alertNumber"] : 0;
-            returnCount += alertNumber
+            returnCount += alertNumber;
             let li = $("<li class='level" + level + "'></li>");
             let a = $("<a class='menuNode' href='javasprict:void(0)'>" +
                 "<i class='fa fa-circle-o'></i>" +
@@ -87,16 +87,24 @@ $.fn["eventAndOptionSet"] = function eventAndOptionSet(options) {
     let _this = this
     _this.find('li a').on('click', function (e) {
         let $this = $(this);
-        var checkElement = $this.next();
+        let checkElement = $this.next();
+
+        //Get the parent menu
+        var parent = $this.parents('ul').first();
+        //Close all open menus within the parent
+        var ul = parent.find('ul:visible').slideUp(menuAnimationSpeed);
+        //Remove the menu-open class from the parent
+        ul.removeClass('menu-open');
+        parent.find('.fa-minus').switchClass('fa-minus','fa-plus');
+
 
         if (checkElement.is('.treeview-menu') && checkElement.is(':visible')) {
-            $(checkElement.parent().find('.fa-minus')[0]).removeClass('fa-minus').addClass('fa-plus');
+            $(checkElement.parent().find('.fa-minus')[0]).switchClass('fa-minus','fa-plus');
             checkElement.slideUp(menuAnimationSpeed, function () {
                 checkElement.removeClass('menu-open');
             });
-            checkElement.parent("li").removeClass("active");
         } else if ((checkElement.is('.treeview-menu')) && (!checkElement.is(':visible'))) {//If the menu is not visible
-            $(checkElement.parent().find('.fa-plus')[0]).removeClass('fa-plus').addClass('fa-minus');
+            $(checkElement.parent().find('.fa-plus')[0]).switchClass('fa-plus','fa-minus');
             checkElement.slideDown(menuAnimationSpeed, function () {
                 checkElement.addClass('menu-open');
             });
