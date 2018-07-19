@@ -1,11 +1,11 @@
 let comm = require('../controllers/common/common');
 
-function beforStart(cli) {
+function onStart(cli) {
 
 }
 
 exports.socketRoutes = function socketRoutes(cli) {
-    beforStart(cli)
-    // comm.boundScksUrl(cli, "dataManage/getWindSpeedChart", dataManage.getWindSpeedChart);
+    onStart(cli);
+    // comm.boundScksMsg(cli, "getWindSpeedChart", dataManage.getWindSpeedChart);
 };
 

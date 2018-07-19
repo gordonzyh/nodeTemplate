@@ -6,8 +6,9 @@ let config = objAssign({
         projectViewName:"测风塔管理系统"
     },
     serverInfo:{
-        appPort: "3000",
+        appPort: 3000,
         fengYunServerUrl: "http://172.161.11.82:30000",
+        isOnCloudServer: false,
     },
     socket: {
         serviceType: "http",
@@ -22,7 +23,6 @@ let config = objAssign({
         PORT: "27018"
     },
     redisInfo:{
-        isOnCloudServer: "false",
         redis: {
             REQUIREPASS: "sja123",
             //     IP: "172.161.11.82",

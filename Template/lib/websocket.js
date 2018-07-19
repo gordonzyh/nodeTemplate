@@ -24,8 +24,13 @@ var server = http.createServer(function (request, response) {
 
 var socket = io.listen(server);
 
-
 //服务器监控socket
 socket.on("connection", function (cli) {
     socketRoutes.socketRoutes(cli)
+});
+//服务器监控socket
+socket.on("close", function () {
+});
+//服务器监控socket
+socket.on("error", function (error) {
 });

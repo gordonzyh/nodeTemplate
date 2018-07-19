@@ -12,9 +12,8 @@ exports.index = function (req, res, next) {
     client.hgetall('testKey', function (err, object) {
         console.log(object);
     });
-    console.log('Socket URL ' + COMMON.getSocketURL(req));
+
     COMMON.render(req, res, 'index', {
-        socketURL: COMMON.getSocketURL(req),
         userName: "test",
     });
 };

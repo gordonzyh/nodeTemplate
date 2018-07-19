@@ -14,21 +14,7 @@ const commMsg = {
         "ERR013": "上传文件存在tim格式，请输入高度后，重新上传",
         "ERR999": "系统错误，请联系管理员"
     },
-    "autoUploadError": {
-        "ERR005": "文件解析异常",
-        "ERR006": "文件大小不符合规定",
-        "ERR007": "文件内容异常",
-        "ERR008": "未接收到邮件",
-        "ERR011": "邮箱账号或密码错误！",
-        "ERR012": "邮件服务器连接超时！"
-    },
-    "errorType":{
-        "speed":"风速",
-        "direction":"风向",
-        "humidity":"温度",
-        "temperature":"湿度",
-        "air_pressure":"气压"
-    }
+
 };
 
 function getMessage(msgCode) {

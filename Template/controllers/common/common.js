@@ -3,7 +3,7 @@
  */
 let config = require("../../config/config").config;
 let _this = this;
-
+let comm = require('common');
 exports.boundAppsUrl = function (app, url, func, options) {
     let boundUrl = '/' + config.projectInfo.projectName + (url ? "/" + url : "");
     if (options["submitTpe"].toLocaleLowerCase()==="post"){
@@ -12,14 +12,11 @@ exports.boundAppsUrl = function (app, url, func, options) {
         app.get(boundUrl, func);
     }
 };
-exports.boundScksUrl = function (cli, path, callbanck, options) {
-    cli.on(path, function (cdata) {
-        callbanck(cdata, cli);
+exports.boundScksMsg = function (cli, msg, callback, options) {
+    cli.on(msg, function (cdata) {
+        callback(cdata, cli);
     });
 };
-
-
-
 
 // 获取socket路径(子工程需要在config.json里配置PATH属性)
 exports.getSocketURL = function getSocketURL(req) {
@@ -200,6 +197,7 @@ exports.extendCom = function extendCom(json1, json2) {
 };
 
 exports.render = function (req, res, htmlName, option) {
+    option["socketURL"]= comm.getSocketURL(req);
     if (!req.authJson) {
         option["authJson"] = '{}'
     } else {

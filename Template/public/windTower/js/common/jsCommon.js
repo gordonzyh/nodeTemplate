@@ -1,10 +1,10 @@
-function isEmptyObject(obj) {
-    var name;
-    for (name in obj) {
+let comm ={};
+comm.isEmptyObject = function(obj) {
+    for (let key in obj) {
         return false;
     }
     return true;
-}
+};
 
 function isEmptyArray(obj) {
     if (!obj || !isArray(obj) || obj.length === 0) {
