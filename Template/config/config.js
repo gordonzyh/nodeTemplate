@@ -1,11 +1,11 @@
 let customConfig = require('./customConfig').config;
 let objAssign = require('object-assign');
 let config = objAssign({
-    projectInfo:{
-        projectName: "windTower",
-        projectViewName:"测风塔管理系统"
+    projectInfo: {
+        projectName: "xxxx",
+        projectViewName: "测风塔管理系统"
     },
-    serverInfo:{
+    serverInfo: {
         appPort: 3000,
         fengYunServerUrl: "http://172.161.11.82:30000",
         isOnCloudServer: false,
@@ -22,10 +22,10 @@ let config = objAssign({
         DBNAME: "cloud_dev",
         PORT: "27018"
     },
-    redisInfo:{
+    redisInfo: {
         redis: {
             REQUIREPASS: "sja123",
-            //     IP: "172.161.11.82",
+            // IP: "172.161.11.82",
             IP: "106.12.3.7",
             PORT: 6379
         },

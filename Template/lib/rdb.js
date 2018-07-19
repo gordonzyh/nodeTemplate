@@ -4,7 +4,7 @@ var basePath = process.cwd();
 basePath = basePath.indexOf("bin") != -1?basePath.substr(0,basePath.indexOf("bin")-1):basePath;
 var objConfig = require(basePath + "/config/config").config;;
 var isOnCloudServer = true;
-if(undefined != objConfig.redisInfo.isOnCloudServer && null != objConfig.redisInfo.isOnCloudServer && "false" == objConfig.redisInfo.isOnCloudServer){
+if(undefined != objConfig.serverInfo.isOnCloudServer && null != objConfig.serverInfo.isOnCloudServer && !objConfig.serverInfo.isOnCloudServer){
 	isOnCloudServer = false;
 }
 

@@ -3,7 +3,6 @@
  */
 let config = require("../../config/config").config;
 let _this = this;
-let comm = require('common');
 exports.boundAppsUrl = function (app, url, func, options) {
     let boundUrl = '/' + config.projectInfo.projectName + (url ? "/" + url : "");
     if (options["submitTpe"].toLocaleLowerCase()==="post"){
@@ -197,7 +196,7 @@ exports.extendCom = function extendCom(json1, json2) {
 };
 
 exports.render = function (req, res, htmlName, option) {
-    option["socketURL"]= comm.getSocketURL(req);
+    option["socketURL"]= _this.getSocketURL(req);
     if (!req.authJson) {
         option["authJson"] = '{}'
     } else {

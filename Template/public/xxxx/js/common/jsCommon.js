@@ -6,14 +6,15 @@ comm.isEmptyObject = function(obj) {
     return true;
 };
 
-function isEmptyArray(obj) {
-    if (!obj || !isArray(obj) || obj.length === 0) {
-        return true;
-    }
-    return false
-}
+comm.isEmptyArray=function (obj) {
+    return (!obj || !comm.isArray(obj) || obj.length === 0);
+};
+comm.replace=function (str,find,repl){
+    let reg = new RegExp(find , "g" )
+    return str.replace(reg ,repl);
+};
 
-function isArray(o) {
+comm.isArray = function(o) {
     return Object.prototype.toString.call(o) == '[object Array]';
 }
 
@@ -153,7 +154,7 @@ function msgClear() {
 }
 
 function getViewMsg(msg) {
-    return isArray(msg) && msg.length > 1 ? '● ' + msg.join('<br/> ● ') : msg;
+    return comm.isArray(msg) && msg.length > 1 ? '● ' + msg.join('<br/> ● ') : msg;
 }
 
 function warning(msg) {
